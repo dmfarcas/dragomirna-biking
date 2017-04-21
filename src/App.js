@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Harta from './Harta';
+import mock_user_locations from './mock_user_locations';
+import SidebarParticipanti from './SidebarParticipanti';
+
+const participanti = mock_user_locations;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div id="wrapper">
+        <div id="clasament">
+          <SidebarParticipanti participanti={participanti}></SidebarParticipanti>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <div id="map">
+          <Harta participanti={participanti} />
+        </div>
       </div>
-    );
+     );
   }
 }
 
