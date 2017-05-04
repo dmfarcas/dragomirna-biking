@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
-import Harta from './Harta';
-import SidebarParticipanti from './SidebarParticipanti';
-import firebaseConfig from './config/firebase.config.js';
 import Firebase from 'firebase';
 import ReactFireMixin from 'reactfire';
 import reactMixin from 'react-mixin';
+import firebaseConfig from './config/firebase.config.js';
+import './App.css';
+import Harta from './Harta';
+import SidebarParticipanti from './SidebarParticipanti';
 
-Firebase.initializeApp(firebaseConfig
+Firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
   constructor(props) {

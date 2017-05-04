@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import './Harta.css';
 
-const Participant = ({ text }) => <div>{text}</div>;
+function getRandomColor() {
+    var color = 'rgba('+ Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + '0.5' + ')';
+    return color;
+}
+
+
+const Participant = ({ text, color }) => {
+  return (
+    <div
+      style={color}
+      className="avatar-participant">
+
+      <span>{text}</span>
+
+    </div>
+  );
+};
 
 const afiseazaParticipanti = (participanti) => {
-  console.log(participanti);
   return participanti.map((p, index) => {
     return <Participant key={index}
       lat={p.lastLocation.latitude}
       lng={p.lastLocation.longitude}
       text={p.id}
+      color={{backgroundColor: getRandomColor()}} //FIXME: la fiecare update din firebase isi ia random color, ar trebui sa fie aceeasi culoare de la start la finish
     />;
   });
 }
