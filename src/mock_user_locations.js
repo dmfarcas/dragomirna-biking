@@ -19,7 +19,8 @@ const mock_user_locations = [
       "id" : 7777,
       "latitude" : 47.6401834,
       "longitude" : 26.2593748,
-      "timestamp" : 1492600555700
+      "timestamp" : 1492600555700,
+      "isActive": false
     },
     {
       "nume": "asdasd",

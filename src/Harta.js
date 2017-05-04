@@ -4,10 +4,11 @@ import GoogleMapReact from 'google-map-react';
 const Participant = ({ text }) => <div>{text}</div>;
 
 const afiseazaParticipanti = (participanti) => {
+  console.log(participanti);
   return participanti.map((p, index) => {
     return <Participant key={index}
-      lat={p.latitude}
-      lng={p.longitude}
+      lat={p.lastLocation.latitude}
+      lng={p.lastLocation.longitude}
       text={p.id}
     />;
   });
