@@ -3,11 +3,10 @@ import GoogleMapReact from 'google-map-react';
 import './Harta.css';
 
 function getRandomColor() {
-    var color = 'rgba('+ Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + '0.5' + ')';
-    return color;
+    return `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, 0.5)`;
 }
 
-
+console.log(getRandomColor());
 const Participant = ({ text, color }) => {
   return (
     <div
