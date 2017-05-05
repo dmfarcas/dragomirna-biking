@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Filter from './Filter';
 const listaParticipanti = (participanti) => {
   return participanti.map((p, index) => {
-    console.log(p);
     return (
       <tr key={index}>
         <td>{p.name}</td>
@@ -21,7 +19,6 @@ export default class SidebarParticipanti extends Component {
   render() {
     return (
       <div>
-        <Filter />
         <table>
           <tbody>
           <tr>
