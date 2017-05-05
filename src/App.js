@@ -5,23 +5,47 @@ import reactMixin from 'react-mixin';
 import firebaseConfig from './config/firebase.config.js';
 import './App.css';
 import Harta from './Harta';
-import SidebarParticipanti from './SidebarParticipanti';
+import Participanti from './Participanti';
+import Cautare from './Cautare';
 
 Firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {participanti: {}}
+    this.state = {
+      filterText: '',
+      participanti: {},
+    };
+    this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
   }
+
+  handleFilterTextInput(filterText) {
+    console.log(filterText);
+    this.setState({
+      filterText: filterText
+    });
+  }
+
   render() {
+    const participantiActivi = this.state.participanti.filter((p) => {
+      if (this.state.filterText !== "") {
+        return p.name.toUpperCase().includes(this.state.filterText.toUpperCase()) && p.active === true;
+      }
+      return p.active === true
+    });
+
     return (
       <div id="wrapper">
         <div id="clasament">
-          <SidebarParticipanti participanti={this.state.participanti} />
+          <Cautare 
+            filterText={this.state.filterText}
+            onFilterTextInput={this.handleFilterTextInput}
+          />
+          <Participanti participanti={participantiActivi} />
         </div>
         <div id="map">
-          <Harta participanti={this.state.participanti} />
+          <Harta participanti={participantiActivi} />
         </div>
       </div>
      );
