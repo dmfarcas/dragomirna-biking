@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Filter from './Filter';
 const listaParticipanti = (participanti) => {
   return participanti.map((p, index) => {
     console.log(p);
@@ -20,17 +20,19 @@ export default class SidebarParticipanti extends Component {
 
   render() {
     return (
-      <table>
-        <tbody>
-        <tr>
-          <th>Nume</th>
-          <th>Numar</th>
-          <th>Traseu</th>
-        </tr>
-        {listaParticipanti(this.props.participanti)}
-        </tbody>
-      </table>
-      // </ul>
+      <div>
+        <Filter />
+        <table>
+          <tbody>
+          <tr>
+            <th>Nume</th>
+            <th>Numar</th>
+            <th>Traseu</th>
+          </tr>
+          {listaParticipanti(this.props.participanti)}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

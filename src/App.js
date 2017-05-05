@@ -9,6 +9,9 @@ import SidebarParticipanti from './SidebarParticipanti';
 
 Firebase.initializeApp(firebaseConfig);
 
+
+const activeParticipants = (participants) => participants.filter(p => p.active === true);
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,10 +21,10 @@ class App extends Component {
     return (
       <div id="wrapper">
         <div id="clasament">
-          <SidebarParticipanti participanti={this.state.participanti} />
+          <SidebarParticipanti participanti={activeParticipants(this.state.participanti)} />
         </div>
         <div id="map">
-          <Harta participanti={this.state.participanti} />
+          <Harta participanti={activeParticipants(this.state.participanti)} />
         </div>
       </div>
      );
