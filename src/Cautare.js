@@ -24,7 +24,7 @@ export default class Filter extends Component {
           type="text" 
           onChange={this.handleFilterTextInputChange} 
           value={this.props.filterText}
-          placeholder="Filter" />
+          placeholder="Cautare" />
       </div>
     );
   }
