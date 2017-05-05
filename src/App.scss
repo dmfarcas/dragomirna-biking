@@ -1,0 +1,15 @@
+#wrapper {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr; /*custom grid css*/
+  grid-auto-rows: minmax(97.5px, auto);
+}
+
+#clasament {
+  grid-column: 1 / 2;
+  grid-row: 1 / 11;
+}
+
+#map {
+  grid-column: 2 / 12;
+  grid-row: 1 / 11;
+}

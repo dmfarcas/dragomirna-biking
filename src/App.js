@@ -20,7 +20,6 @@ class App extends Component {
         <div id="clasament">
           <SidebarParticipanti participanti={this.state.participanti} />
         </div>
-
         <div id="map">
           <Harta participanti={this.state.participanti} />
         </div>

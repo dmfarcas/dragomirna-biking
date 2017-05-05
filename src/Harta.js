@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Harta.css';
 
-function getRandomColor() {
+function getRandomColor(p) {
     return `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, 0.5)`;
 }
 
@@ -12,9 +12,7 @@ const Participant = ({ text, color }) => {
     <div
       style={color}
       className="avatar-participant">
-
       <span>{text}</span>
-
     </div>
   );
 };

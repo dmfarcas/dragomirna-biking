@@ -57,3 +57,5 @@ yarn-error.log*
 # configuration
 /src/config/firebase.config.js
 
+#ceseseu
+src/**/*.css
