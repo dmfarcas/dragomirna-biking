@@ -5,3 +5,11 @@ cp './config/firebase.config.example' ./config/firebase.config'
 yarn install
 yarn start
 ```
+
+# Deploy
+
+```
+npm install -g firebase-tools
+npm run build
+firebase deploy
+```
