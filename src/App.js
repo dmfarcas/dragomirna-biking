@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   handleFilterTextInput(filterText) {
-    console.log(filterText);
     this.setState({
       filterText: filterText
     });
