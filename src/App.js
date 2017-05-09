@@ -29,7 +29,11 @@ class App extends Component {
   render() {
     const participantiActivi = this.state.participanti.filter((p) => {
       if (this.state.filterText !== "") {
-        return p.name.toUpperCase().includes(this.state.filterText.toUpperCase()) && p.active === true;
+        console.log(p);
+        return (
+          p.name.toUpperCase().includes(this.state.filterText.toUpperCase()) 
+       || p.id.toString().includes(this.state.filterText))
+       && p.active === true;
       }
       return p.active === true
     });

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Cautare.css';
 
 export default class Filter extends Component {
   static defaultProps = {
@@ -24,7 +25,7 @@ export default class Filter extends Component {
           type="text" 
           onChange={this.handleFilterTextInputChange} 
           value={this.props.filterText}
-          placeholder="Cautare" />
+          placeholder="Cautare dupa Nume sau Numar" />
       </div>
     );
   }
