@@ -22,6 +22,7 @@ export default class Filter extends Component {
     return (
       <div>
         <input 
+          id="cautare"
           type="text" 
           onChange={this.handleFilterTextInputChange} 
           value={this.props.filterText}

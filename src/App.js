@@ -7,7 +7,7 @@ import './App.css';
 import Harta from './Harta';
 import Participanti from './Participanti';
 import Cautare from './Cautare';
-
+import FiltruTipTraseu from './FiltruTipTraseu';
 Firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
@@ -16,8 +16,11 @@ class App extends Component {
     this.state = {
       filterText: '',
       participanti: {},
+      traseuScurt: true,
+      traseuLung: true
     };
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleFilterTextInput(filterText) {
@@ -26,17 +29,31 @@ class App extends Component {
     });
   }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.checked;
+    const name = target.name;
+
+    this.setState({
+        [name]: value
+    });
+  }
+
   render() {
     const participantiActivi = this.state.participanti.filter((p) => {
-      if (this.state.filterText !== "") {
-        console.log(p);
+      if((p.circuit === "traseu scurt" && this.state.traseuScurt) || (p.circuit === "traseu lung" && this.state.traseuLung)) { 
+        if (this.state.filterText !== "") {
+        // cautare dupa nume, id, doar participanti activi.
         return (
           p.name.toUpperCase().includes(this.state.filterText.toUpperCase()) 
-       || p.id.toString().includes(this.state.filterText))
-       && p.active === true;
+       || p.id.toString().includes(this.state.filterText)
+       ) && p.active === true;
       }
       return p.active === true
+      }
+
     });
+
 
     return (
       <div id="wrapper">
@@ -45,6 +62,11 @@ class App extends Component {
             filterText={this.state.filterText}
             onFilterTextInput={this.handleFilterTextInput}
           />
+          <FiltruTipTraseu
+            traseuScurt={this.state.traseuScurt}
+            traseuLung={this.state.traseuLung}
+            handleInputChange={this.handleInputChange} />
+
           <Participanti participanti={participantiActivi} />
         </div>
         <div id="map">
