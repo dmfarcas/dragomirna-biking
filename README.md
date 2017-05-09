@@ -10,6 +10,6 @@ yarn start
 
 ```
 npm install -g firebase-tools
-npm run build
-firebase deploy
+chmod +x deploy(not sure if necessary though)
+./deploy
 ```
