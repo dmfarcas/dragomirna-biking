@@ -43,15 +43,12 @@ class App extends Component {
     const participantiActivi = this.state.participanti.filter((p) => {
       if((p.circuit === "traseu scurt" && this.state.traseuScurt) || (p.circuit === "traseu lung" && this.state.traseuLung)) { 
         if (this.state.filterText !== "") {
-        // cautare dupa nume, id, doar participanti activi.
-        return (
-          p.name.toUpperCase().includes(this.state.filterText.toUpperCase()) 
-       || p.id.toString().includes(this.state.filterText)
-       ) && p.active === true;
+          // cautare dupa nume, id, doar participanti activi.
+          return (p.name.toUpperCase().includes(this.state.filterText.toUpperCase()) 
+            || p.id.toString().includes(this.state.filterText)) && p.active === true;
+        }
+        return p.active === true
       }
-      return p.active === true
-      }
-
     });
 
 
