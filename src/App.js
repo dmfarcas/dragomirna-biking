@@ -96,6 +96,16 @@ class App extends Component {
 
     return (
       <div id="wrapper">
+        <svg style={{display: 'none'}}>
+          <symbol id="iconCheck" viewBox="0 0 24 24">
+            <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </symbol>
+          <symbol id="iconCheckOn" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+          </symbol>
+        </svg>
         <div id="clasament">
           <Cautare 
             filterText={this.state.filterText}
@@ -105,7 +115,6 @@ class App extends Component {
             traseuScurt={this.state.traseuScurt}
             traseuLung={this.state.traseuLung}
             handleTipTraseuChange={this.handleTipTraseuChange} />
-
           <Participanti 
             veziTotiParticipantii={this.veziTotiParticipantii}
             totiParticipantiiState={this.state.totiParticipantiiState}

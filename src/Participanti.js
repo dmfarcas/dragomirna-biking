@@ -11,42 +11,42 @@ export default class SidebarParticipanti extends Component {
     const listaParticipanti = (participanti) => {
       return participanti.map((p, index) => {
         return (
-          <tr key={p.id}>
-            <td>              
-              <input
-                id={p.id}
-                name="checkboxParticipant"
-                onChange={this.veziParticipantiSelectati}
-                checked={this.props.participantiSelectati.includes(parseInt(p.id, 10))}
-                type="checkbox" />
-            </td>
-            <td>{p.name}</td>
-            <td>{p.id}</td>
-            <td>{p.circuit}</td>
-          </tr>
+          <label key={p.id} className="table-row">
+            <input
+              id={p.id}
+              name="checkboxParticipant"
+              onChange={this.veziParticipantiSelectati}
+              checked={this.props.participantiSelectati.includes(parseInt(p.id, 10))}
+              type="checkbox" />
+            <svg className="icon icon--checkbox" width="24" height="24">
+              <use className="off" xlinkHref="#iconCheck"></use>
+              <use className="on" xlinkHref="#iconCheckOn"></use>
+            </svg>
+            <div className="table-name">{p.name}</div>
+            <div className="table-number">{p.id}</div>
+            <div className="table-circuit">{p.circuit}</div>
+          </label>
         );
       });
     };
 
     return (
-      <div>
-        <table>
-          <tbody>
-          <tr>
-            <th>
-              <input
-                  name="veziTotiParticipantii"
-                  onChange={this.veziTotiParticipantii}
-                  checked={this.props.totiParticipantiiState}
-                  type="checkbox" />
-            </th>
-            <th>Nume</th>
-            <th>Numar</th>
-            <th>Traseu</th>
-          </tr>
-          {listaParticipanti(this.props.participanti)}
-          </tbody>
-        </table>
+      <div id="participanti-wrapper">
+        <label className="table-row table-row--head">
+          <input
+            name="veziTotiParticipantii"
+            onChange={this.veziTotiParticipantii}
+            checked={this.props.totiParticipantiiState}
+            type="checkbox" />
+          <svg className="icon icon--checkbox" width="24" height="24">
+            <use className="off" xlinkHref="#iconCheck"></use>
+            <use className="on" xlinkHref="#iconCheckOn"></use>
+          </svg>
+          <div className="table-name">Nume</div>
+          <div className="table-number">Număr</div>
+          <div className="table-circuit">Traseu</div>
+        </label>  
+        {listaParticipanti(this.props.participanti)}
       </div>
     );
   }
