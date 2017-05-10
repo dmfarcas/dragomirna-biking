@@ -1,3 +1,6 @@
+#map {
+  flex-grow: 1;
+}
 .avatar-participant {
     border-radius: 50%;
     border: solid 3px;
@@ -10,5 +13,4 @@
       text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0px 2px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000, -2px 0px 0 #000, 2px 2px 5px #000;
       color: white;
     }
-
 }
