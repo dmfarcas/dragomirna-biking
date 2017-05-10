@@ -4,12 +4,12 @@ import './Cautare.css';
 export default class Filter extends Component {
   constructor(props) {
     super(props);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleTipTraseuChange = this.handleTipTraseuChange.bind(this);
   }
 
 
-  handleInputChange(e) {
-    this.props.handleInputChange(e);
+  handleTipTraseuChange(e) {
+    this.props.handleTipTraseuChange(e);
   }
 
   render() {
@@ -21,7 +21,7 @@ export default class Filter extends Component {
             name="traseuScurt"
             type="checkbox"
             checked={this.props.traseuScurt}
-            onChange={this.handleInputChange} />
+            onChange={this.handleTipTraseuChange} />
         </label>        
         <label>
           Traseu lung
@@ -29,7 +29,7 @@ export default class Filter extends Component {
             name="traseuLung"
             type="checkbox"
             checked={this.props.traseuLung}
-            onChange={this.handleInputChange} />
+            onChange={this.handleTipTraseuChange} />
         </label>
       </form>
     );

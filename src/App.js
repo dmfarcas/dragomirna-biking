@@ -15,12 +15,21 @@ class App extends Component {
     super(props);
     this.state = {
       filterText: '',
-      participanti: {},
+      participanti: [],
       traseuScurt: true,
-      traseuLung: true
+      traseuLung: true,
+      totiParticipantiiState: true,
+      participantiSelectati: []
     };
+
+    // this.state.participantiSelectati = this.state.participanti.map(e => parseInt(e.id, 10));
+
+
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleTipTraseuChange = this.handleTipTraseuChange.bind(this);
+    this.veziTotiParticipantii = this.veziTotiParticipantii.bind(this);
+    this.veziParticipantiSelectati = this.veziParticipantiSelectati.bind(this);
+    
   }
 
   handleFilterTextInput(filterText) {
@@ -29,7 +38,7 @@ class App extends Component {
     });
   }
 
-  handleInputChange(event) {
+  handleTipTraseuChange(event) {
     const target = event.target;
     const value = target.checked;
     const name = target.name;
@@ -39,18 +48,51 @@ class App extends Component {
     });
   }
 
+  veziTotiParticipantii(event) {
+    const checked = event.target.checked;
+    this.setState({
+      totiParticipantiiState: checked,
+      participantiSelectati: checked ? this.state.participanti.map(e => parseInt(e.id, 10)) : []
+    });
+  }
+
+  veziParticipantiSelectati(event) {
+    const aratParticipantPeHarta = event.target.checked;
+    const participantSelectat = parseInt(event.currentTarget.id, 10);
+    const prevState = this.state.participantiSelectati;
+
+    if (aratParticipantPeHarta) {
+      this.setState({
+        participantiSelectati: [...prevState, participantSelectat]
+      });
+    } else {
+      this.setState({
+        participantiSelectati: prevState.filter((e) => e !== participantSelectat)
+      });
+    }
+
+  }
+
   render() {
     const participantiActivi = this.state.participanti.filter((p) => {
-      if((p.circuit === "traseu scurt" && this.state.traseuScurt) || (p.circuit === "traseu lung" && this.state.traseuLung)) { 
+      const filtruTraseuScurt = p.circuit === "traseu scurt" && this.state.traseuScurt;
+      const filtruTraseuLung = p.circuit === "traseu lung" && this.state.traseuLung;
+
+      if((filtruTraseuScurt || filtruTraseuLung)) { 
         if (this.state.filterText !== "") {
           // cautare dupa nume, id, doar participanti activi.
-          return (p.name.toUpperCase().includes(this.state.filterText.toUpperCase()) 
-            || p.id.toString().includes(this.state.filterText)) && p.active === true;
+          const filtruNume = p.name.toUpperCase().includes(this.state.filterText.toUpperCase());
+          const filtruNumarParticipant = p.id.toString().includes(this.state.filterText);
+          
+          return (filtruNume || filtruNumarParticipant) && p.active === true;
         }
+        // daca nu se filtreaza nimic, returneaza toti utilizatorii activi
         return p.active === true
       }
+      return false; // nothing to return
     });
 
+    const participantiActiviPeHarta = participantiActivi.filter(e => this.state.participantiSelectati.includes(parseInt(e.id, 10)));
 
     return (
       <div id="wrapper">
@@ -62,12 +104,17 @@ class App extends Component {
           <FiltruTipTraseu
             traseuScurt={this.state.traseuScurt}
             traseuLung={this.state.traseuLung}
-            handleInputChange={this.handleInputChange} />
+            handleTipTraseuChange={this.handleTipTraseuChange} />
 
-          <Participanti participanti={participantiActivi} />
+          <Participanti 
+            veziTotiParticipantii={this.veziTotiParticipantii}
+            totiParticipantiiState={this.state.totiParticipantiiState}
+            participantiSelectati={this.state.participantiSelectati}
+            veziParticipantiSelectati={this.veziParticipantiSelectati}
+            participanti={participantiActivi} />
         </div>
         <div id="map">
-          <Harta participanti={participantiActivi} />
+          <Harta participanti={participantiActiviPeHarta} />
         </div>
       </div>
      );
@@ -75,6 +122,12 @@ class App extends Component {
   componentWillMount() {
     const firebaseRef = Firebase.database().ref('Users');
     this.bindAsArray(firebaseRef, 'participanti');
+    
+    firebaseRef.once("value", (dataSnapshot) => { 
+      this.setState({
+        participantiSelectati: this.state.participanti.map(e => parseInt(e.id, 10))
+      });
+    });
   }
 }
 

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './Cautare.css';
 
 export default class Filter extends Component {
-  static defaultProps = {
-    participanti: {}
-  };
-
   constructor(props) {
     super(props);
     this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this);
