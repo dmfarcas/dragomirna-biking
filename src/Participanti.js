@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { flatten, partition } from 'lodash';
 
 export default class SidebarParticipanti extends Component {
   constructor(props) {
@@ -9,7 +10,10 @@ export default class SidebarParticipanti extends Component {
 
   render() {
     const listaParticipanti = (participanti) => {
-      return participanti.map((p, index) => {
+      const eParticipantulSelectat = p => this.props.participantiSelectati.includes(parseInt(p.id, 10));
+
+      return flatten(partition(participanti, eParticipantulSelectat))
+      .map((p, index) => {
         return (
           <tr key={p.id}>
             <td>              
