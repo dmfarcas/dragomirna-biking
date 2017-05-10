@@ -26,7 +26,7 @@ export default class Filter extends Component {
           type="text" 
           onChange={this.handleFilterTextInputChange} 
           value={this.props.filterText}
-          placeholder="Cautare dupa Nume sau Numar" />
+          placeholder="Căutare după Nume sau Număr" />
       </div>
     );
   }

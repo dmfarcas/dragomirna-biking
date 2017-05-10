@@ -1,3 +1,17 @@
 #cautare {
+  height: 50px;
   width:100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #fff;
+  background-color: #232323;
+  border: none;
+  border-bottom: 1px solid rgba(#fff, 0.15);
+  outline: none;
+  &:focus,
+  &:active {
+    &::placeholder {
+      opacity: 0;
+    }
+  }
 }
