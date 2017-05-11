@@ -12,6 +12,11 @@ const Participant = ({ text, color }) => {
   );
 };
 
+const createMapOptions = (maps) => {
+  return {
+    mapTypeId: maps.MapTypeId.SATELLITE
+  }
+}
 
 export default class Harta extends Component {
   constructor(props) {
@@ -40,6 +45,7 @@ export default class Harta extends Component {
       <GoogleMapReact
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
+        options={createMapOptions}
       >{participant}</GoogleMapReact>
     );
   }

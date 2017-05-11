@@ -2,15 +2,16 @@
   flex-grow: 1;
 }
 .avatar-participant {
-    border-radius: 50%;
-    border: solid 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 32px;
     width: 32px;
+    background-color: #232323;
+    border: 3px solid aquamarine;
+    border-radius: 50%;
     span {
       display: block;
-      padding-left: 4px;
-      padding-top: 9px;
-      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0px 2px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000, -2px 0px 0 #000, 2px 2px 5px #000;
-      color: white;
+      color: #fff;
     }
 }
