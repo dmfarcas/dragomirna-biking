@@ -3,20 +3,27 @@ import GoogleMapReact from 'google-map-react';
 import './Harta.css';
 
 const Participant = ({ text, color }) => {
+  const culoareParticipant = (str) => { // http://stackoverflow.com/a/16348977
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    var colour = '#';
+    for (var i = 0; i < 3; i++) {
+        var value = (hash >> (i * 8)) & 0xFF;
+        colour += ('00' + value.toString(16)).substr(-2);
+    }
+    return colour;
+  }
+
   return (
     <div
-      style={color}
+      style={{ border: `3px solid ${culoareParticipant(text)}` }}
       className="avatar-participant">
       <span>{text}</span>
     </div>
   );
 };
-
-const createMapOptions = (maps) => {
-  return {
-    mapTypeId: maps.MapTypeId.SATELLITE
-  }
-}
 
 export default class Harta extends Component {
   constructor(props) {
@@ -33,6 +40,12 @@ export default class Harta extends Component {
   };
 
   render() {
+    const createMapOptions = (maps) => {
+      return {
+        mapTypeId: maps.MapTypeId.SATELLITE
+      }
+    }
+
     const participant = this.props.participanti.map((p, index) => {
       return <Participant key={index}
         lat={p.lastLocation.latitude}

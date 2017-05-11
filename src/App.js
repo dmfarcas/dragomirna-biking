@@ -22,8 +22,6 @@ class App extends Component {
       participantiSelectati: []
     };
 
-    // this.state.participantiSelectati = this.state.participanti.map(e => parseInt(e.id, 10));
-
 
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
     this.handleTipTraseuChange = this.handleTipTraseuChange.bind(this);
@@ -132,7 +130,7 @@ class App extends Component {
     const firebaseRef = Firebase.database().ref('Users');
     this.bindAsArray(firebaseRef, 'participanti');
     
-    firebaseRef.once("value", (dataSnapshot) => { 
+    firebaseRef.once("value", (dataSnapshot) => { // la initializare, toti participantii sunt vizibili.
       this.setState({
         participantiSelectati: this.state.participanti.map(e => parseInt(e.id, 10))
       });
