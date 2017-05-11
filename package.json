@@ -5,6 +5,7 @@
   "dependencies": {
     "firebase": "^3.9.0",
     "google-map-react": "^0.24.0",
+    "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-mixin": "^2.0.2",
