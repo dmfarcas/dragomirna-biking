@@ -86,7 +86,7 @@ input[type="checkbox"] {
 }
 #participanti-wrapper {
   flex-grow: 1;
-  padding: 7px 10px 10px;
+  padding: 7px 0 10px;
   overflow-y: auto;
   user-select: none;
   &::-webkit-scrollbar {
@@ -100,16 +100,21 @@ input[type="checkbox"] {
 .table-row {
   display: flex;
   align-items: center;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px 10px;
+  border-right: 3px solid transparent;
   cursor: pointer;
   &:nth-of-type(even) {
     background-color: rgba(#fff, 0.05);
+  }
+  &.active,
+  &:hover {
+    border-color: #00aaff;
   }
 }
 .table-row--head {
   margin-bottom: 3px;
   padding-bottom: 7px;
+  border-right: none;
 }
 .table-name,
 .table-number,

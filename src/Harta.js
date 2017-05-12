@@ -16,7 +16,7 @@ const Participant = ({ idParticipant, numeParticipant, active, color }) => {
     return colour;
   }
 
-  const isActive = () => { if(active) return "active" }
+  const isActive = () => active ? "active" : ""
 
   return (
     <div

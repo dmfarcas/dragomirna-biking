@@ -19,7 +19,6 @@ export default class SidebarParticipanti extends Component {
           <label 
             key={p.id} 
             onMouseEnter={() => this.schimbaStateHover(p.id)}
-
             className="table-row"
             >
             <input
