@@ -13,8 +13,8 @@
     transition: transform 0.1s;
     &.active,
     &:hover {
-      transform: scale(1.3);
-      box-shadow: 0 0 4px 2px rgba(aqua, 0.7);
+      transform: scale(1.4);
+      box-shadow: 0 0 4px 2px#00aaff;
       cursor: pointer;
     }
     span {
