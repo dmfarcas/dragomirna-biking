@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Harta.css';
 
-const Participant = ({ text, color }) => {
+const Participant = ({ idParticipant, numeParticipant, color }) => {
   const culoareParticipant = (str) => { // http://stackoverflow.com/a/16348977
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -18,9 +18,9 @@ const Participant = ({ text, color }) => {
 
   return (
     <div
-      style={{ border: `3px solid ${culoareParticipant(text)}` }}
+      style={{ border: `3px solid ${culoareParticipant(numeParticipant)}` }}
       className="avatar-participant">
-      <span>{text}</span>
+      <span>{idParticipant}</span>
     </div>
   );
 };
@@ -35,7 +35,7 @@ export default class Harta extends Component {
 
   static defaultProps = {
     center: {lat: 47.6401534, lng: 26.2572495},
-    zoom: 17,
+    zoom: 6,
     participanti: {},
   };
 
@@ -50,7 +50,8 @@ export default class Harta extends Component {
       return <Participant key={index}
         lat={p.lastLocation.latitude}
         lng={p.lastLocation.longitude}
-        text={p.id}
+        idParticipant={p.id}
+        numeParticipant={p.name}
       />;
     }); 
   
