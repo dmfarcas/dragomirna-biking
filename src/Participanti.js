@@ -6,6 +6,7 @@ export default class SidebarParticipanti extends Component {
     super(props);
     this.veziTotiParticipantii = this.props.veziTotiParticipantii.bind(this);
     this.veziParticipantiSelectati = this.props.veziParticipantiSelectati.bind(this);
+    this.schimbaStateHover = this.props.schimbaStateHover.bind(this);
   }
 
   render() {
@@ -15,7 +16,12 @@ export default class SidebarParticipanti extends Component {
       return flatten(partition(participanti, eParticipantulSelectat))
       .map((p, index) => {
         return (
-          <label key={p.id} className="table-row">
+          <label 
+            key={p.id} 
+            onMouseEnter={() => this.schimbaStateHover(p.id)}
+
+            className="table-row"
+            >
             <input
               id={p.id}
               name="checkboxParticipant"
@@ -35,7 +41,10 @@ export default class SidebarParticipanti extends Component {
     };
 
     return (
-      <div id="participanti-wrapper">
+      <div 
+        id="participanti-wrapper"
+        onMouseLeave={() => this.schimbaStateHover(-1)}
+        >
         <label className="table-row table-row--head">
           <input
             name="veziTotiParticipantii"

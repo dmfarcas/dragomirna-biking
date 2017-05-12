@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Harta.css';
 
-const Participant = ({ idParticipant, numeParticipant, color }) => {
+const Participant = ({ idParticipant, numeParticipant, active, color }) => {
   const culoareParticipant = (str) => { // http://stackoverflow.com/a/16348977
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -16,10 +16,12 @@ const Participant = ({ idParticipant, numeParticipant, color }) => {
     return colour;
   }
 
+  const isActive = () => { if(active) return "active" }
+
   return (
     <div
       style={{ borderColor: `${culoareParticipant(numeParticipant)}` }}
-      className="avatar-participant">
+      className={`avatar-participant ${isActive()}`}>
       <span>{idParticipant}</span>
     </div>
   );
@@ -47,11 +49,13 @@ export default class Harta extends Component {
     }
 
     const participant = this.props.participanti.map((p, index) => {
+
       return <Participant key={index}
         lat={p.lastLocation.latitude}
         lng={p.lastLocation.longitude}
         idParticipant={p.id}
         numeParticipant={p.name}
+        active={parseInt(p.id) === this.props.participantHovered}
       />;
     }); 
   

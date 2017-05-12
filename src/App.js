@@ -20,14 +20,21 @@ class App extends Component {
       traseuScurt: true,
       traseuLung: true,
       totiParticipantiiState: true,
-      participantiSelectati: []
+      participantiSelectati: [],
+      participantHovered: -1
     };
 
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
     this.handleTipTraseuChange = this.handleTipTraseuChange.bind(this);
     this.veziTotiParticipantii = this.veziTotiParticipantii.bind(this);
     this.veziParticipantiSelectati = this.veziParticipantiSelectati.bind(this);
-    
+    this.schimbaStateHover = this.schimbaStateHover.bind(this);
+  }
+
+  schimbaStateHover(participantHovered) {
+    this.setState({
+      participantHovered: parseInt(participantHovered, 10)
+    });
   }
 
   handleFilterTextInput(filterText) {
@@ -118,10 +125,14 @@ class App extends Component {
             totiParticipantiiState={this.state.totiParticipantiiState}
             participantiSelectati={this.state.participantiSelectati}
             veziParticipantiSelectati={this.veziParticipantiSelectati}
+            schimbaStateHover={this.schimbaStateHover}
             participanti={participantiActivi} />
         </div>
         <div id="map">
-          <Harta participanti={participantiActiviPeHarta} />
+          <Harta 
+            participanti={participantiActiviPeHarta} 
+            participantHovered={this.state.participantHovered}
+            />
         </div>
       </div>
      );
