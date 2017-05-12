@@ -8,6 +8,7 @@ import Harta from './Harta';
 import Participanti from './Participanti';
 import Cautare from './Cautare';
 import FiltruTipTraseu from './FiltruTipTraseu';
+
 Firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
@@ -22,7 +23,6 @@ class App extends Component {
       participantiSelectati: []
     };
 
-
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
     this.handleTipTraseuChange = this.handleTipTraseuChange.bind(this);
     this.veziTotiParticipantii = this.veziTotiParticipantii.bind(this);
@@ -32,7 +32,7 @@ class App extends Component {
 
   handleFilterTextInput(filterText) {
     this.setState({
-      filterText: filterText
+      filterText
     });
   }
 
