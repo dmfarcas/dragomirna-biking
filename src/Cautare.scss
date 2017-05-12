@@ -101,14 +101,13 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   padding: 3px 10px;
-  border-right: 3px solid transparent;
+  border-right: 4px solid transparent;
   cursor: pointer;
   &:nth-of-type(even) {
     background-color: rgba(#fff, 0.05);
   }
-  &.active,
-  &:hover {
-    border-color: #00aaff;
+  &:not(.active) {
+    border-color: transparent !important;
   }
 }
 .table-row--head {

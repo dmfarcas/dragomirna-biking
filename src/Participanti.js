@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { flatten, partition } from 'lodash';
+import { isActive, culoareParticipant } from './helpers'
 
 export default class SidebarParticipanti extends Component {
   constructor(props) {
@@ -14,12 +15,13 @@ export default class SidebarParticipanti extends Component {
       const eParticipantulSelectat = p => this.props.participantiSelectati.includes(parseInt(p.id, 10));
 
       return flatten(partition(participanti, eParticipantulSelectat))
-      .map((p, index) => {
+        .map((p, index) => {
         return (
           <label 
             key={p.id} 
             onMouseEnter={() => this.schimbaStateHover(p.id)}
-            className="table-row"
+            className={`table-row ${isActive(parseInt(p.id, 10) === this.props.participantHovered)}`}
+            style={{ borderColor: `${culoareParticipant(p.name)}` }}
             >
             <input
               id={p.id}
