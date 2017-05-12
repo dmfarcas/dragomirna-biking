@@ -126,11 +126,13 @@ class App extends Component {
             participantiSelectati={this.state.participantiSelectati}
             veziParticipantiSelectati={this.veziParticipantiSelectati}
             schimbaStateHover={this.schimbaStateHover}
+            participantHovered={this.state.participantHovered}
             participanti={participantiActivi} />
         </div>
         <div id="map">
           <Harta 
             participanti={participantiActiviPeHarta} 
+            schimbaStateHover={this.schimbaStateHover}
             participantHovered={this.state.participantHovered}
             />
         </div>

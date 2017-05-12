@@ -1,31 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Harta.css';
-
-const Participant = ({ idParticipant, numeParticipant, active, color }) => {
-  const culoareParticipant = (str) => { // http://stackoverflow.com/a/16348977
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    let colour = '#';
-    for (let i = 0; i < 3; i++) {
-      let value = (hash >> (i * 8)) & 0xFF;
-      colour += ('00' + value.toString(16)).substr(-2);
-    }
-    return colour;
-  }
-
-  const isActive = () => active ? "active" : ""
-
-  return (
-    <div
-      style={{ borderColor: `${culoareParticipant(numeParticipant)}` }}
-      className={`avatar-participant ${isActive()}`}>
-      <span>{idParticipant}</span>
-    </div>
-  );
-};
+import { isActive, culoareParticipant } from './helpers'
 
 export default class Harta extends Component {
   constructor(props) {
@@ -33,6 +9,7 @@ export default class Harta extends Component {
     this.state = {
       culoriParticipanti: []
     };
+    this.schimbaStateHover = this.props.schimbaStateHover.bind(this);
   }
 
   static defaultProps = {
@@ -42,6 +19,18 @@ export default class Harta extends Component {
   };
 
   render() {
+    const Participant = ({ idParticipant, numeParticipant, active, color }) => {
+      return (
+        <div
+          onMouseEnter={() => this.schimbaStateHover(idParticipant)}  
+          onMouseLeave={() => this.schimbaStateHover(-1)}  
+          style={{ borderColor: `${culoareParticipant(numeParticipant)}` }}
+          className={`avatar-participant ${isActive(active)}`}>
+          <span>{idParticipant}</span>
+        </div>
+      );
+    };
+
     const createMapOptions = maps => {
       return {
         mapTypeId: maps.MapTypeId.SATELLITE
