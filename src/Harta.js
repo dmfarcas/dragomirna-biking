@@ -55,7 +55,7 @@ export default class Harta extends Component {
         lng={p.lastLocation.longitude}
         idParticipant={p.id}
         numeParticipant={p.name}
-        active={parseInt(p.id) === this.props.participantHovered}
+        active={parseInt(p.id, 10) === this.props.participantHovered}
       />;
     }); 
   
