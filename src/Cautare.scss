@@ -17,8 +17,8 @@ $border-light: rgba(#fff, 0.05);
     background: #232323;
     border-top: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-bottom: 10px solid lighten(#232323, 20);
-    border-right: 10px solid lighten(#232323, 20);
+    border-bottom: 10px solid lighten(#232323, 12);
+    border-right: 10px solid lighten(#232323, 12);
   }
 }
 #cautare-wrapper {
@@ -28,6 +28,7 @@ $border-light: rgba(#fff, 0.05);
   padding-left: 11px;
   padding-right: 11px;
   border-bottom: 1px solid $border;
+  cursor: text;
 }
 #cautare-icon {
   flex-shrink: 0;
@@ -87,7 +88,6 @@ input[type="checkbox"] {
   padding: 7px 10px 10px;
   overflow-y: auto;
   user-select: none;
-  cursor: pointer;
   &::-webkit-scrollbar {
     width: 8px;
     background-color: hsla(0, 0%, 100%, 0.1);
