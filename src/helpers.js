@@ -1,5 +1,5 @@
 export const isActive = (active) => {
-  return active ? "active" : null
+  return active ? "active" : ""
 }
 
 export const culoareParticipant = (str) => { // http://stackoverflow.com/a/16348977

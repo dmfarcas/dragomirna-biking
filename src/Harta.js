@@ -22,8 +22,14 @@ export default class Harta extends Component {
     const Participant = ({ idParticipant, numeParticipant, active, color }) => {
       return (
         <div
-          onMouseEnter={() => this.schimbaStateHover(idParticipant)}
-          onMouseLeave={() => this.schimbaStateHover(-1)}
+          onMouseEnter={(e) => {
+            this.schimbaStateHover(idParticipant)
+            e.target.closest('.avatar-participant').parentElement.classList.add('avatar-index')
+          }}
+          onMouseLeave={(e) => {
+            this.schimbaStateHover(-1)
+            e.target.closest('.avatar-participant').parentElement.classList.remove('avatar-index')
+          }}
           style={{ borderColor: `${culoareParticipant(numeParticipant)}` }}
           className={`avatar-participant ${isActive(active)}`}>
           <span>{idParticipant}</span>
