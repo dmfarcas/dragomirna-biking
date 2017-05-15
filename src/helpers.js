@@ -1,5 +1,4 @@
 export const isActive = (active) => {
-  console.log(active);
   return active ? "active" : null
 }
 
