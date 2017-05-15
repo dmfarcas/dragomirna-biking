@@ -63,9 +63,9 @@ export default class Harta extends Component {
       const GMapsPolyline = new maps.Polyline({
         path: traseuLungPolyline,
         geodesic: true,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 5
+        strokeColor: '#00aaff',
+        strokeOpacity: 0.7,
+        strokeWeight: 4
       });
 
       GMapsPolyline.setMap(map);
