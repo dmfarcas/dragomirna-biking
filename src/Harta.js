@@ -18,6 +18,7 @@ export default class Harta extends Component {
     zoom: 6,
     participanti: {},
   };
+
   render() {
     const Participant = ({ idParticipant, numeParticipant, active, color }) => {
       return (
@@ -52,27 +53,33 @@ export default class Harta extends Component {
         active={parseInt(p.id, 10) === this.props.participantHovered}
       />;
     });
-  
-    const PolylineDot = () => {
-      return <div className={`avatar-participant`}></div>
-    }
 
-    const traseuLungPolyline = traseuLung.features["0"].geometry.coordinates["0"].map((t, index) => {
-      if (index % 100 === 0) // Test, there are 7000 elements in the coordinates array
-        return (<PolylineDot key={index}
-          lng={t[0]}
-          lat={t[1]}
-        />);
-    });
+    const loadedGMapsApi = ({map, maps}) => {
+      const traseuLungPolyline = traseuLung.features["0"].geometry.coordinates["0"]
+      .map((coord, index) => {
+          return {lng: coord[0], lat: coord[1]}
+      });
+    
+      const GMapsPolyline = new maps.Polyline({
+        path: traseuLungPolyline,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 5
+      });
+
+      GMapsPolyline.setMap(map);
+    }
 
     return (
       <GoogleMapReact
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
         options={createMapOptions}
+        onGoogleApiLoaded={loadedGMapsApi}
+                       yesIWantToUseGoogleMapApiInternals
       >
         {participant}
-        {traseuLungPolyline}
       </GoogleMapReact>
     );
   }
