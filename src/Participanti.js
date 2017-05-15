@@ -19,7 +19,19 @@ export default class SidebarParticipanti extends Component {
         return (
           <label 
             key={p.id} 
-            onMouseEnter={() => this.schimbaStateHover(p.id)}
+            onMouseEnter={() => {
+              this.schimbaStateHover(p.id)
+              setTimeout(() => {
+                document.querySelectorAll('.avatar-participant.active').forEach((el) => {
+                  el.parentElement.classList.add('avatar-index')
+                })
+              }, 0)
+            }}
+            onMouseLeave={() => {
+              document.querySelectorAll('.avatar-participant').forEach((el) => {
+                el.parentElement.classList.remove('avatar-index')
+              })
+            }}
             className={`table-row ${isActive(parseInt(p.id, 10) === this.props.participantHovered)}`}
             style={{ borderColor: `${culoareParticipant(p.name)}` }}
             >
