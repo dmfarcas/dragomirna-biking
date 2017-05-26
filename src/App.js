@@ -22,7 +22,6 @@ class App extends Component {
       totiParticipantiiState: true,
       participantiSelectati: [],
       participantHovered: -1,
-      screenOrientation: ''
     };
 
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
@@ -149,28 +148,6 @@ class App extends Component {
         participantiSelectati: this.state.participanti.map(e => parseInt(e.id, 10))
       });
     });
-  }
-  componentDidMount() {
-    const setScreenOrientation = () => {
-      const orientation = screen.orientation    ||
-                  screen.mozOrientation ||
-                  screen.msOrientation  ||
-                  null;
-
-      this.setState({
-        screenOrientation: orientation.type
-      });
-    }
-
-    setScreenOrientation(); // on init
-    
-    
-    if (screen) {
-
-      window.addEventListener("orientationchange", (ev) => { // on change
-        setScreenOrientation();
-      });
-    }
   }
 }
 

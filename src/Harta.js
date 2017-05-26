@@ -14,8 +14,8 @@ export default class Harta extends Component {
   }
 
   static defaultProps = {
-    center: {lat: 47.6401534, lng: 26.2572495},
-    zoom: 6,
+    center: {lat: 47.76, lng: 26.20},
+    zoom: 13,
     participanti: {},
   };
 
@@ -77,7 +77,7 @@ export default class Harta extends Component {
         defaultZoom={this.props.zoom}
         options={createMapOptions}
         onGoogleApiLoaded={loadedGMapsApi}
-                       yesIWantToUseGoogleMapApiInternals
+          yesIWantToUseGoogleMapApiInternals
       >
         {participant}
       </GoogleMapReact>
