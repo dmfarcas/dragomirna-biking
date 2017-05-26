@@ -10,4 +10,21 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  @media (orientation: portrait) {
+    border: 20px solid aquamarine;
+    &::after {
+      content: "Întoarce telefonu";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      font-size: 24px;
+      color: #fff;
+      background-color: rgba(mediumspringgreen, 0.5);
+    }
+  }
 }

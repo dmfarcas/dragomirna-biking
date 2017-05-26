@@ -21,7 +21,7 @@ class App extends Component {
       traseuLung: true,
       totiParticipantiiState: true,
       participantiSelectati: [],
-      participantHovered: -1
+      participantHovered: -1,
     };
 
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);

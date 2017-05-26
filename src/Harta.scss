@@ -2,25 +2,28 @@
   flex-grow: 1;
 }
 .avatar-participant {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-    width: 32px;
-    background-color: #232323;
-    border-radius: 50%;
-    border: 3px solid;
-    transition: transform 0.1s;
-    &.active,
-    &:hover {
-      transform: scale(1.4);
-      box-shadow: 0 0 4px 2px#00aaff;
-      cursor: pointer;
-    }
-    span {
-      display: block;
-      color: #fff;
-    }
+  $size: 32px;
+  $scaleOnZoom: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $size;
+  width: $size;
+  background-color: #232323;
+  border-radius: 50%;
+  border: 3px solid;
+  transition: transform 0.1s;
+  transform: translateX(-$size/2) translateY(-$size/2);
+  transform-origin: center;
+  &.active,
+  &:hover {
+    transform: translateX(-$size/2) translateY(-$size/2) scale($scaleOnZoom);
+    cursor: pointer;
+  }
+  span {
+    display: block;
+    color: #fff;
+  }
 }
 .avatar-index {
   z-index: 1000;
