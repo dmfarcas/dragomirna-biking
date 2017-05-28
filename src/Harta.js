@@ -40,7 +40,9 @@ export default class Harta extends Component {
 
     const createMapOptions = maps => {
       return {
-        mapTypeId: maps.MapTypeId.SATELLITE
+        mapTypeId: maps.MapTypeId.SATELLITE,
+        minZoom: 12,
+        maxZoom: 16,
       }
     }
 
