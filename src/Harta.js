@@ -15,7 +15,7 @@ export default class Harta extends Component {
 
   static defaultProps = {
     center: {lat: 47.76, lng: 26.20},
-    zoom: 13,
+    zoom: 12,
     participanti: {},
   };
 
@@ -61,7 +61,7 @@ export default class Harta extends Component {
       .map((coord, index) => {
           return {lng: coord[0], lat: coord[1]}
       });
-    
+
       const GMapsPolyline = new maps.Polyline({
         path: traseuLungPolyline,
         geodesic: true,
