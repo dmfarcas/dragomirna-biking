@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Harta.css';
 import * as traseuLung from './constants/traseu_lung.json';
+import * as traseuScurt from './constants/traseu_scurt.json';
 import { isActive, culoareParticipant } from './helpers'
 
 export default class Harta extends Component {
@@ -57,20 +58,21 @@ export default class Harta extends Component {
     });
 
     const loadedGMapsApi = ({map, maps}) => {
-      const traseuLungPolyline = traseuLung.features["0"].geometry.coordinates["0"]
-      .map((coord, index) => {
-          return {lng: coord[0], lat: coord[1]}
-      });
+      const createPolyline = (traseu, culoare) => {
+        return new maps.Polyline({
+          path: traseu.features["0"].geometry.coordinates["0"]
+          .map((coord, index) => {
+              return {lng: coord[0], lat: coord[1]}
+          }),
+          geodesic: true,
+          strokeColor: culoare,
+          strokeOpacity: 1,
+          strokeWeight: 4
+        });
+      };
 
-      const GMapsPolyline = new maps.Polyline({
-        path: traseuLungPolyline,
-        geodesic: true,
-        strokeColor: '#00aaff',
-        strokeOpacity: 0.7,
-        strokeWeight: 4
-      });
-
-      GMapsPolyline.setMap(map);
+      createPolyline(traseuLung, '#2fff00').setMap(map);
+      createPolyline(traseuScurt, '#00aaff').setMap(map);
     }
 
     return (

@@ -83,12 +83,12 @@ class App extends Component {
       const filtruTraseuScurt = p.circuit === "traseu scurt" && this.state.traseuScurt;
       const filtruTraseuLung = p.circuit === "traseu lung" && this.state.traseuLung;
 
-      if((filtruTraseuScurt || filtruTraseuLung)) { 
+      if((filtruTraseuScurt || filtruTraseuLung)) {
         if (this.state.filterText !== "") {
           // cautare dupa nume, id, doar participanti activi.
           const filtruNume = p.name.toUpperCase().includes(this.state.filterText.toUpperCase());
           const filtruNumarParticipant = p.id.toString().includes(this.state.filterText);
-          
+
           return (filtruNume || filtruNumarParticipant) && p.active === true;
         }
         // daca nu se filtreaza nimic, returneaza toti utilizatorii activi
@@ -112,7 +112,7 @@ class App extends Component {
           </symbol>
         </svg>
         <div id="clasament">
-          <Cautare 
+          <Cautare
             filterText={this.state.filterText}
             onFilterTextInput={this.handleFilterTextInput}
           />
@@ -120,7 +120,7 @@ class App extends Component {
             traseuScurt={this.state.traseuScurt}
             traseuLung={this.state.traseuLung}
             handleTipTraseuChange={this.handleTipTraseuChange} />
-          <Participanti 
+          <Participanti
             veziTotiParticipantii={this.veziTotiParticipantii}
             totiParticipantiiState={this.state.totiParticipantiiState}
             participantiSelectati={this.state.participantiSelectati}
@@ -130,8 +130,8 @@ class App extends Component {
             participanti={participantiActivi} />
         </div>
         <div id="map">
-          <Harta 
-            participanti={participantiActiviPeHarta} 
+          <Harta
+            participanti={participantiActiviPeHarta}
             schimbaStateHover={this.schimbaStateHover}
             participantHovered={this.state.participantHovered}
             />
@@ -142,7 +142,7 @@ class App extends Component {
   componentWillMount() {
     const firebaseRef = Firebase.database().ref('Users');
     this.bindAsArray(firebaseRef, 'participanti');
-    
+
     firebaseRef.once("value", (dataSnapshot) => { // la initializare, toti participantii sunt vizibili.
       this.setState({
         participantiSelectati: this.state.participanti.map(e => parseInt(e.id, 10))
