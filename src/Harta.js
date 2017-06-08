@@ -68,7 +68,6 @@ export default class Harta extends Component {
   }
 
   render() {
-
     const Participant = ({ idParticipant, numeParticipant, active, color }) => {
       return (
         <div
@@ -107,15 +106,15 @@ export default class Harta extends Component {
 
 
     return (
-        <GoogleMapReact
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-          options={createMapOptions}
-          onGoogleApiLoaded={({ map, maps }) => { this.setState({ map: map, maps:maps, mapLoaded: true }) }}
-            yesIWantToUseGoogleMapApiInternals
-        >
-          {participant}
-        </GoogleMapReact>
+      <GoogleMapReact
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
+        options={createMapOptions}
+        onGoogleApiLoaded={({ map, maps }) => { this.setState({ map: map, maps:maps, mapLoaded: true }) }}
+          yesIWantToUseGoogleMapApiInternals
+      >
+        {participant}
+      </GoogleMapReact>
     );
   }
 }
