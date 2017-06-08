@@ -75,15 +75,24 @@ input[type="checkbox"] {
   display: none;
   &:checked + .icon--checkbox .off {
     display: none;
-  } 
+  }
   &:not(:checked) + .icon--checkbox .on {
     display: none;
-  } 
+  }
 }
 .icon--checkbox {
   fill: #fff;
   flex-shrink: 0;
 }
+
+.icon--checkbox--traseu-lung {
+  fill: #2fff00;
+}
+
+.icon--checkbox--traseu-scurt {
+  fill: #00aaff;
+}
+
 #participanti-wrapper {
   flex-grow: 1;
   padding: 7px 0 10px;
