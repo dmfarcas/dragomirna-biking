@@ -8,6 +8,7 @@ import Harta from './Harta';
 import Participanti from './Participanti';
 import Cautare from './Cautare';
 import FiltruTipTraseu from './FiltruTipTraseu';
+import logo from './assets/logo.png'
 
 Firebase.initializeApp(firebaseConfig);
 
@@ -138,6 +139,7 @@ class App extends Component {
             participantHovered={this.state.participantHovered}
             />
         </div>
+        <img src={logo} alt="Assist logo" className="logo"/>
       </div>
      );
   }
