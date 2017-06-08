@@ -131,6 +131,8 @@ class App extends Component {
         </div>
         <div id="map">
           <Harta
+            traseuScurt={this.state.traseuScurt}
+            traseuLung={this.state.traseuLung}
             participanti={participantiActiviPeHarta}
             schimbaStateHover={this.schimbaStateHover}
             participantHovered={this.state.participantHovered}

@@ -14,26 +14,26 @@ export default class Filter extends Component {
 
   render() {
     return (
-      <form id="filtru-tip-traseu">      
+      <form id="filtru-tip-traseu">
         <label className="filtru-tip-traseu__label">
           <input
             name="traseuScurt"
             type="checkbox"
             checked={this.props.traseuScurt}
             onChange={this.handleTipTraseuChange} />
-          <svg className="icon icon--checkbox" width="24" height="24">
+          <svg className="icon icon--checkbox icon--checkbox--traseu-scurt" width="24" height="24">
             <use className="off" xlinkHref="#iconCheck"></use>
             <use className="on" xlinkHref="#iconCheckOn"></use>
           </svg>
           <span>Traseu scurt</span>
-        </label>        
+        </label>
         <label className="filtru-tip-traseu__label">
           <input
             name="traseuLung"
             type="checkbox"
             checked={this.props.traseuLung}
             onChange={this.handleTipTraseuChange} />
-          <svg className="icon icon--checkbox" width="24" height="24">
+          <svg className="icon icon--checkbox icon--checkbox--traseu-lung" width="24" height="24">
             <use className="off" xlinkHref="#iconCheck"></use>
             <use className="on" xlinkHref="#iconCheckOn"></use>
           </svg>
